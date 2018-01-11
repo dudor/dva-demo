@@ -34,8 +34,8 @@ class LoginPage extends Component {
                         })(
                             <Checkbox>Remember me</Checkbox>
                             )}
-                        <a className="login-form-forgot" href="">Forgot password</a>
-                        <Button type="primary" htmlType="submit" className="login-form-button">
+                        <a className={styles.loginFormForgot} href="">Forgot password</a>
+                        <Button type="primary" htmlType="submit" className={styles.loginFormButton}>
                             Log in
           </Button>
                         Or <a href="">register now!</a>
