@@ -1,11 +1,5 @@
 {
-  "proxy": {
-    "/api": {
-      "target": "http://jsonplaceholder.typicode.com/",
-      "changeOrigin": true,
-      "pathRewrite": { "^/api" : "" }
-    }
-  },
+  "entry": "src/index.js",
   "extraBabelPlugins": [
     ["import", { "libraryName": "antd", "style": true }]
   ],
