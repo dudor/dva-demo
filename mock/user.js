@@ -11,7 +11,14 @@ module.exports = {
     db.data.push(user);
     res.status(200).json(user);
   },
-  'POST /api/login' : function (req, res){
-    res.status(200).json({status: 'ok'})
+  'POST /api/login': function (req, res) {
+    const result = {
+      success: false,
+      msg: ''
+    }
+    result.status = 'ok';
+    result.msg = '登陆成功';
+    result.success = true;
+    res.status(200).json(result);
   }
 }
