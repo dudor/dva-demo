@@ -11,7 +11,9 @@ module.exports = {
     db.data.push(user);
     res.status(200).json(user);
   },
-  'POST /api/login': function (req, res) {
+  [`POST /api/login`](req, res) {
+    let user = req.body;
+    console.log(req);
     const result = {
       success: false,
       msg: ''
