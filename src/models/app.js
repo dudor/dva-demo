@@ -2,10 +2,24 @@ import {routerRedux} from 'dva/router'
 
 export default {
   namespace: 'app',
-  state: {},
+  state: {
+    user: {},
+    permissions: {},
+    menu: {},
+    menuPopoverVisible: false,
+    siderFold: localStorage.getItem('siderFold') === 'true',
+    darkTheme: localStorage.getItem('darkTheme') === 'true',
+    isNavbar: document.body.clientWidth < 769,
+    navOpenKeys: JSON.parse(localStorage.getItem('navOpenKeys')) || []
+  },
   subscriptions: {
-    setup({dispatch, history}) {
+    setup({dispatch}) {
+      let timer;
       window.onresize = e => {
+        clearTimeout(timer);
+        timer = setTimeout(()=>{
+          dispatch({type:''});
+        },500);
       }
 
       if (true) {
@@ -18,12 +32,44 @@ export default {
       yield put(routerRedux.push({pathname: '/login'}))
     }
   },
-  reducers:{
-    loginSuccess(state,action){
-      return {...state,...action.payload};
+  reducers: {
+    updateState(state, action) {
+      return {
+        ...state,
+        ...action.payload
+      }
     },
-    logoutSuccess(state,action){
-      return {...state}
+    switchSider(state) {
+      localStorage.setItem('siderFlod', !state.siderFold);
+      return {
+        ...state,
+        siderFold: !state.siderFold
+      }
+    },
+    switchTheme(state) {
+      localStorage.setItem('darkTheme', !state.darkTheme);
+      return {
+        ...state,
+        darkTheme: !state.darkTheme
+      }
+    },
+    switchMenuPopver(state) {
+      return {
+        ...state,
+        menuPopoverVisible: !state.menuPopoverVisible
+      }
+    },
+    handleNavbar(state, {payload}) {
+      return {
+        ...state,
+        isNavbar: payload
+      }
+    },
+    handleNavOpenKeys(state, action) {
+      return {
+        ...state,
+        ...action.payload,
+      }
     }
   }
 }

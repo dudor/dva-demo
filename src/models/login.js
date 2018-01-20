@@ -20,9 +20,9 @@ export default {
         type: 'changeLoginState',
         payload: response
       });
-      const app = yield select(_ =>{console.log(_);return  _.app;})
-
-      yield put(routerRedux.push('/'))
+      if(response && response.success){
+        yield put(routerRedux.push('/'));
+      }
     },
     * logout({payload}, {call, put}) {
 
