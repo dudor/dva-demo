@@ -18,7 +18,7 @@ export default {
       window.onresize = e => {
         clearTimeout(timer);
         timer = setTimeout(()=>{
-          dispatch({type:''});
+          //dispatch({type:''});
         },500);
       }
 
