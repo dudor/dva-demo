@@ -22,7 +22,7 @@ export default {
         },500);
       }
 
-      if (true) {
+      if (false) {
         dispatch(routerRedux.push({pathname: '/login'}));
       }
     }
